@@ -22,8 +22,7 @@ const appendRamen = (arr) => {
     arr.forEach(element => {
         img = document.createElement('img')
         let link = element.image
-        if (element >= 5) img.src = link
-        else img.src = nuImg 
+        img.src = link
         img.className = `img${element.id}`
         topContainer.append(img)
         img.addEventListener('click', (e) => {
@@ -96,13 +95,12 @@ let form = document.getElementById('new-ramen')
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
-    let nuName = document.getElementById("new-name")
-    let nuRest = document.getElementById("new-restaurant")
-    let nuImg = document.getElementById("new-image")
-    let nuRating = document.getElementById("new-rating")
-    let nuComm = document.getElementById("new-comment")
+    let nuName = document.getElementById("new-name").value
+    let nuRest = document.getElementById("new-restaurant").value
+    let nuImg = document.getElementById("new-image").value
+    let nuRating = document.getElementById("new-rating").value
+    let nuComm = document.getElementById("new-comment").value
     let newRamen = {
-        "id": ramenArr.length+1,
         "name": nuName,
         "restaurant": nuRest,
         "image": nuImg,
@@ -111,9 +109,15 @@ form.addEventListener('submit', (e) => {
     }
     ramenArr.push(newRamen)
     appendRamen(ramenArr)
+    
+    fetch(`${baseUrl}/ramens`, {
+        method: 'POST',
+        body: JSON.stringify(newRamen),
+        headers: { 'Content-type': "application/json"}
+    })
 })
 
-// bug when adding new ramen due to image getting fucked up
+// bug when adding new ramen due to image getting fucked
 
 
 

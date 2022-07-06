@@ -117,7 +117,7 @@ form.addEventListener('submit', (e) => {
     })
 })
 
-// bug when adding new ramen due to image getting fucked
+// bug when adding new ramen due to image getting fd resolved by using POST req
 
 
 

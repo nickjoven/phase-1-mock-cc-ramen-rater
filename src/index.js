@@ -16,10 +16,14 @@ let ramenArr = []
 // function to append from arr to div
 
 const appendRamen = (arr) => {
+    while (topContainer.hasChildNodes()) {
+        topContainer.removeChild(topContainer.firstChild);
+    }
     arr.forEach(element => {
         img = document.createElement('img')
         let link = element.image
-        img.src = link
+        if (element >= 5) img.src = link
+        else img.src = nuImg 
         img.className = `img${element.id}`
         topContainer.append(img)
         img.addEventListener('click', (e) => {
@@ -76,23 +80,40 @@ const ramenInfo = (i) => {
     comment.textContent = ramenArr[num].comment
 }
 
-//
+// 2 down. 1 left
 
+// - Create a new ramen after submitting the `new-ramen` form.The new ramen should
+// be added to the`#ramen-menu` div.The new ramen does not need to persist; in
+// other words, if you refresh the page, it's okay that the new ramen is no
+// longer on the page.
 
-// how do I know which event is which?
+// take in form data
+// add new ramen and its data to div
 
+// in other words, push to ramen array
 
+let form = document.getElementById('new-ramen')
 
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    let nuName = document.getElementById("new-name")
+    let nuRest = document.getElementById("new-restaurant")
+    let nuImg = document.getElementById("new-image")
+    let nuRating = document.getElementById("new-rating")
+    let nuComm = document.getElementById("new-comment")
+    let newRamen = {
+        "id": ramenArr.length+1,
+        "name": nuName,
+        "restaurant": nuRest,
+        "image": nuImg,
+        "rating": nuRating,
+        "comment": nuComm,
+    }
+    ramenArr.push(newRamen)
+    appendRamen(ramenArr)
+})
 
-
-
-
-
-
-
-
-
-
+// bug when adding new ramen due to image getting fucked up
 
 
 
@@ -142,10 +163,6 @@ const ramenInfo = (i) => {
 
 
 
-// - Create a new ramen after submitting the `new-ramen` form.The new ramen should
-// be added to the`#ramen-menu` div.The new ramen does not need to persist; in
-// other words, if you refresh the page, it's okay that the new ramen is no
-// longer on the page.
 
 // Extra Advanced Deliverables
 // You'll need a these endpoints for these advanced deliverables:

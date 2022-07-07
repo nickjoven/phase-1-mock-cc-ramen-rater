@@ -164,5 +164,6 @@ const fetchRamen = () => {
 // we must invoke the fetchRamen() function so things render on page load 
 fetchRamen()
 ```
-
 The actual JavaScript in there is like, 10 lines of code. That's all you need for that first deliverable! But you need to be able to walk yourself there. 
+
+Closing thoughts as I do one more push for the night, you can do this!

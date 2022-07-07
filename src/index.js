@@ -1,181 +1,114 @@
-// - Access information from an API using a GET request and use it to update the DOM
-// - Listen for user events and update the DOM in response
+// JavaScript Object Notation
+
+// AS A USER,
+// 1
+// - See all ramen ***images**APPEND to DOM in the`div` with the id of`ramen-menu`.When the page
+// loads, **GETrequest the data from the server to get all the ramen objects. Then,
+//     display the image for each of the ramen using an `img` tag inside the
+//   `#ramen-menu` div.
 
 
-// 1.
-// - See all ramen images in the`div` with the id of`ramen-menu`.When the page
-// loads, request the data from the server to get all the ramen objects. Then,
-// display the image for each of the ramen using an `img` tag inside the
-// `#ramen-menu` div.
+// GET: function to request the data from the server to get all the ramen objects
+// fetch something from the database to add images to the DOM
 
-let baseUrl = 'http://localhost:3000'
-let topContainer = document.getElementById('ramen-menu')
-let ramenArr = []
+const baseUrl = 'http://localhost:3000/ramens'
+const detailImage = document.querySelector('.detail-image')
+const ramenName = document.querySelector('.name')
+const restaurant = document.querySelector('.restaurant')
+const rating = document.querySelector('#rating-display')
+const comment = document.querySelector('#comment-display')
 
-// ramen is stored in an array of objects
-// function to append from arr to div
+// comment.textContent = // needs to come from the JSON
 
-const appendRamen = (arr) => {
-    while (topContainer.hasChildNodes()) {
-        topContainer.removeChild(topContainer.firstChild);
-    }
-    arr.forEach(element => {
-        img = document.createElement('img')
-        let link = element.image
-        img.src = link
-        img.className = `img${element.id}`
-        topContainer.append(img)
-        img.addEventListener('click', (e) => {
-            let pureNum = e.target.className.replace(/\D/g, "")
-            console.log(pureNum)
-            ramenInfo(pureNum)
+// GET request: get is the default method for fetch
+const fetchRamen = () => {
+    fetch(baseUrl)
+    .then(req => req.json()) // turns the JSON into an object javascript understands
+    .then(result => {
+        // FOR EACH ELEMENT, PUT THE IMAGE IN THE DOM // use a loop of some kind (forEach)
+        result.forEach((element) => {
+            let img = document.createElement('img')
+            let div = document.getElementById('ramen-menu')
+            // we know we want to append to div id ramen-menu
+            img.src = element.image
+            div.append(img) // when we create our images in the top of the page, we also add an event listener and its functions
+            img.addEventListener('click', (e) => {
+                showInfo(element)
+            })
         })
-    }) 
-}
-
-// function to handle fetch plus invoke appendRamen on res
-const loadRamen = (url) => {
-    fetch(`${url}/ramens`)
-    .then(resp => resp.json())
-    .then(res => {
-        ramenArr = res
-        appendRamen(res)
     })
 }
 
-loadRamen(baseUrl);
+// function will take element.image as an argument and append an image to the div with id ramen-menu
+// and the img src="element.image"
+//
+// add a paragraph to the div with text content hello
 
-// WOOHOO!
+const showInfo = (element) => {
+detailImage.src = element.image
+ramenName.textContent = element.name
+restaurant.textContent = element.restaurant
+rating.textContent = element.rating
+comment.textContent = element.comment
+}
 
-// 2.
+
+
+
+
+fetchRamen()
+
+// Task 2
+//     - ***Click on an image from the `#ramen-menu` div*** and see*** all the info* about that
+//   ramen displayed inside the `#ramen-detail` div*** and where it says
+//   `insert comment here` and`insert rating here`.
+
+// if we run these methods when element matches the image we click on,
+// it will update the DOM
+
+
+// need an event listener that invokes the following:
+
+
+// HTML element.textContent(information from the JSON)
+
+// which HTML elements we are setting the text content of / how to identify them
+
+// what we are setting as the text content
+
+
+// if we have this in a function, where does it go, and when does it happen?
+
+
+
+
+
+
+
+
+
+
+
+// click -> addEventListener #ramen-menu` div
+// append info about ramen inside #ramen-detail` div
+// info* about that ramen comes from 
+
+fetchRamen();
+
+// img source needs to be a URL we get from the JSON
+// img needs to be appended to <div id="ramen-menu">
+
+
+
+// APPEND
+
+// 2
 // - Click on an image from the `#ramen-menu` div and see all the info about that
-// ramen displayed inside the `#ramen-detail` div and where it says
-// `insert comment here` and`insert rating here`.
+//   ramen displayed inside the `#ramen-detail` div and where it says
+//   `insert comment here` and`insert rating here`.
 
-// 5 images in ramen menu div. clicking an image should show info about it:
-// info goes into ramen detail div. name, rest, img, rating, comment
-// should get populated based on the things in the array
-
-// click means make an event listner
-// name goes in class=name
-// restaurant in class=restaurant
-// rating in id=rating display
-// comment in id=comment-display
-// img goes in class=detail-image
-
-// first do it on page load
-
-const ramenInfo = (i) => {
-    let num = parseInt(i) - 1
-    let img = document.getElementById('detail-image')
-    let nameR = document.getElementById('name')
-    let restaurant = document.getElementById('restaurant')
-    let rating = document.getElementById('rating-display')
-    let comment = document.getElementById('comment-display')
-    nameR.innerText = ramenArr[num].name
-    img.src = ramenArr[num].image
-    restaurant.innerText = ramenArr[num].restaurant
-    rating.textContent = ramenArr[num].rating
-    comment.textContent = ramenArr[num].comment
-}
-
-// 2 down. 1 left
-
+// 3
 // - Create a new ramen after submitting the `new-ramen` form.The new ramen should
-// be added to the`#ramen-menu` div.The new ramen does not need to persist; in
-// other words, if you refresh the page, it's okay that the new ramen is no
-// longer on the page.
-
-// take in form data
-// add new ramen and its data to div
-
-// in other words, push to ramen array
-
-let form = document.getElementById('new-ramen')
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault()
-    let nuName = document.getElementById("new-name").value
-    let nuRest = document.getElementById("new-restaurant").value
-    let nuImg = document.getElementById("new-image").value
-    let nuRating = document.getElementById("new-rating").value
-    let nuComm = document.getElementById("new-comment").value
-    let newRamen = {
-        "name": nuName,
-        "restaurant": nuRest,
-        "image": nuImg,
-        "rating": nuRating,
-        "comment": nuComm,
-    }
-    ramenArr.push(newRamen)
-    appendRamen(ramenArr)
-    
-    fetch(`${baseUrl}/ramens`, {
-        method: 'POST',
-        body: JSON.stringify(newRamen),
-        headers: { 'Content-type': "application/json"}
-    })
-})
-
-// bug when adding new ramen due to image getting fd resolved by using POST req
-
-
-
-
-
-// let practiceArray = [
-// { id: 1, name: 'Shoyu Ramen', restaurant: 'Nonono', image: './assets/ramen/shoyu.jpg', rating: 7 },
-// { id: 2, name: 'Naruto Ramen', restaurant: 'Naruto', image: './assets/ramen/naruto.jpg', rating: 10,  },
-// { id: 3, name: 'Nirvana Shiromaru', restaurant: 'Ippudo', image: './assets/ramen/nirvana.jpg', rating: '7',  },
-// { id: 4, name: 'Gyukotsu Ramen', restaurant: 'Za-Ya Ramen', image: './assets/ramen/gyukotsu.jpg', rating: 8,  },
-// { id: 5, name: 'Kojiro Red Ramen', restaurant: 'Ramen-Ya', image: './assets/ramen/kojiro.jpg', rating: 6,  }
-// ]
-
-// practiceArray.forEach(element => {
-//     img = document.createElement('img')
-//     let link = element.image
-//     img.src = link
-//     topContainer.append(img)
-// })
-
-// for each element, array.image
-// append to div from array
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Extra Advanced Deliverables
-// You'll need a these endpoints for these advanced deliverables:
-
-// POST / ramens
-// DELETE / ramens /: id
-// PATCH / ramens /: id
-// As a user, I can:
-
-// persist my updates to a ramen's rating and comment. (PATCH request)
-// persist new ramens that I create(POST request)
-// persist any ramen deletions(DELETE request)
+//   be added to the`#ramen-menu` div.The new ramen does not need to persist; in
+//     other words, if you refresh the page, it's okay that the new ramen is no
+//   longer on the page.

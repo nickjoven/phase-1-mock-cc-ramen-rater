@@ -39,17 +39,17 @@ Do this if you're starting from absolute zero:
 1)   Read the README through its entirety.
 2)   Follow any explicit instructions (as in, direct) such as those in the setup section
 3)   Open a copy of index.html in your browser. *Optional: open up the API in browser* 
-4) Copy the Deliverables into a place where you can work with them. This could be comments in index.js, a whiteboard, scratch paper, or the footer of the will you're writing.
+4)   Copy the Deliverables into a place where you can work with them. This could be comments in index.js, a whiteboard, scratch paper, or the footer of the will you're writing.
 
 You're working from a set of deliverables. The language will be clear in some places, but vague in others. Read them carefully.
 
 Need a specific strategy?
 
-1. Take anything that is written in HTML, CSS, or JavaScript and find out what it refers to. This may point you to an HTML element or imply to use a certain JavaScript function. Something as small as glancing at the open HTML page and seeing where a future element should go could start a feedback loop that helps you find your footing.
-2. Rewrite the instructions in a way that makes sense to you. Trim things down and keep the important parts. 
-3. Try to bridge the gap between nonspecific language and JavaScript words. Can you tell when something will need to be done with a function? What about a specific method? 
+1)   Take anything that is written in HTML, CSS, or JavaScript and find out what it refers to. This may point you to an HTML element or imply to use a certain JavaScript function. Something as small as glancing at the open HTML page and seeing where a future element should go could start a feedback loop that helps you find your footing.
+2)   Rewrite the instructions in a way that makes sense to you. Trim things down and keep the important parts. 
+3)   Try to bridge the gap between nonspecific language and JavaScript words. Can you tell when something will need to be done with a function? What about a specific method? 
 
-Remember to take things a sentence at a time, but that larger context can sometimes explain questions you'll encounter on the first read through.
+Remember to take things a sentence at a time, but that larger context can sometimes explain questions you'll encounter on the first read through. 
 
 You want to go from
 `request the data from the server to get all the ramen objects` to `fetch ramen objects from API` to 
@@ -70,7 +70,7 @@ Let's start with the first deliverable and try to apply these strategies.
   display the image for each of the ramen using an `img` tag inside the
   `#ramen-menu` div.
 
-`div` with the id of `ramen-menu`, `img` tag, `#ramen-menu` div are all given to use. Don't turn down free information! Now let's try to piece apart the rest of the information.
+`div` with the id of `ramen-menu`, `img` tag, `#ramen-menu` div are all given to us. Don't turn down free information! Now let's try to piece apart the rest of the it.
 
 - See all ramen images 
 - When the page loads, request data from server to get all ramen objects

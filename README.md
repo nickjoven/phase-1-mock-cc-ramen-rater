@@ -51,16 +51,3 @@ As a user, I can:
   other words, if you refresh the page, it's okay that the new ramen is no
   longer on the page.
 
-## Advanced Deliverables
-
-These deliverables are not required to pass the code challenge, but if you have
-the extra time, or even after the code challenge, they are a great way to
-stretch your skills.
-
-> Note: If you are going to attempt these advanced deliverables, please be sure
-> to have a working commit with all the Core Deliverables first!
-
-As a user, I can:
-
-- See the details for the first ramen as soon as the page loads (without
-  clicking on an image)

@@ -107,9 +107,9 @@ div.append(imgUrl)
 ```
 ...neither of which will do what you want, but you hopefully, at this point, *know* what you want. And knowing = battle * 1/2.
 
-You are time limited during the challenge. If you are practicing, and you are unfamiliar with something, dive deep into the documentation, tutorials, and Stack Overflow posts. But when time is limited, and it seems like you can work on either of two things, start with the one you know better. This is a test-taking strategy. If you can keep a cool head, and think it's logically better to start with something you know less about, that's fine, too.
+You are time limited during the challenge. If you are practicing, and you are unfamiliar with something, dive deep into the documentation, tutorials, and Stack Overflow posts. But when time is limited, and you have a choice to work on multiple things, conside starting with the ones you know better. 
 
-I am writing too many comments in order to demonstrate my thought process. Your goal is ONLY to be like me in that this code hits the first deliverable. You do NOT need to write out every process as though you are awesome and gracisouly doing so for your wonderful peers.
+Below is example code for the completion of the first deliberable in the README. I am writing too many comments in order to demonstrate my thought process. Your goal is ONLY to be like me in that this code hits the first deliverable--you do NOT need to write out every process as though you are awesome and gracisouly doing so for your wonderful peers.
 
 ```javascript
 // GLOBAL STUFF GOES HERE

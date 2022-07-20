@@ -74,7 +74,7 @@ Let's start with the first deliverable and try to apply these strategies.
   display the image for each of the ramen using an `img` tag inside the
   `#ramen-menu` div.
 
-`div` with the id of `ramen-menu`, `img` tag, `#ramen-menu` div are all given to use. Don't turn down free information! Now let's try to piece apart the rest of the information.
+`div` with the id of `ramen-menu`, `img` tag, `#ramen-menu` div are all given to us. Don't turn down free information! Now let's try to piece apart the rest of the information.
 
 - See all ramen images 
 - When the page loads, request data from server to get all ramen objects
